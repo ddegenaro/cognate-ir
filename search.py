@@ -1,6 +1,5 @@
 import math
 import argparse
-from typing import Union
 
 import pandas as pd
 from pybktree import BKTree

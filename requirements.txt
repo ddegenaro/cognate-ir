@@ -1,0 +1,4 @@
+ir_measures==0.3.7
+pandas==2.2.3
+pybktree==1.1
+strsimpy==0.2.1
