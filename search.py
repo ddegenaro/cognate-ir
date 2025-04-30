@@ -1,5 +1,6 @@
 import math
 import argparse
+from typing import Callable, Union
 
 import pandas as pd
 from pybktree import BKTree
@@ -13,10 +14,32 @@ from strsimpy import (
     QGram,
 )
 
-def fast_int_round(fn):
+def fast_int_round(fn: Callable) -> Callable:
+    
+    """
+    Accepts a string distance function and returns an integer-valued version that is maximally
+    faithful to the original function.
+    
+    Args:
+        - `fn: Callable` - the function.
+        
+    Returns:
+        - `Callable` - the integer-valued version of `fn`.
+    """
+    
     return lambda a, b: round(fn(a, b))
 
 def get_tree(name: str) -> BKTree:
+    
+    """
+    Returns a `BKTree` using the specified string distance function.
+    
+    Args:
+        - `name: str` - The alias of the string distance function to use.
+        
+    Returns:
+        - `BKTree` - The tree with items from `docs.tsv`.
+    """
     
     global docs
     
@@ -32,12 +55,28 @@ def get_tree(name: str) -> BKTree:
 
 def search(
     name: str,
-    split: str,
+    split: Union[str, pd.DataFrame],
     min_R: int,
     max_R: int,
     max_K: int,
     tree: BKTree = None
 ):
+    
+    """
+    Searches a `BKTree` for all the queries in `split`. If `split` is `'train'` or `'test'`, it searches
+    for the queries in the appropriate split. If `split` is a `pd.DataFrame` containing queries, it
+    processes those. The `BKTree` is created if it does not exist. Writes a `.jsonl` result file to
+    `searches/`.
+    
+    Args:
+        - `name: str` - The string distance function to use for the BKTree. Ignored if `tree` is passed,
+        but used for file-naming regardless.
+        - `split: Union[str, pd.DataFrame]` - The data split whose queries are to be used.
+        - `min_R: int` - A starting guess radius to be used.
+        - `max_R: int` - The largest radius to use.
+        - `max_K: int` - The largest number of matches to return for each query.
+        - `tree: BKTree` - The tree to search over. If `None`, it is created based on `name`.
+    """
     
     global train_queries
     global test_queries
