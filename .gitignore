@@ -1,0 +1,10 @@
+CogNet/
+SequenceComparison-SupplementaryMaterial-v1.0-0-gcc4bf85/
+qrels-train-v2.jsonl
+qrels-test-v2.jsonl
+queries-train.tsv
+queries-test.tsv
+words.txt
+lev.tree
+docs.tsv
+searches/
