@@ -11,7 +11,7 @@ from strsimpy import (
     OptimalStringAlignment,
     LongestCommonSubsequence,
     NGram,
-    QGram,
+    QGram
 )
 
 def fast_int_round(fn: Callable) -> Callable:
@@ -115,10 +115,14 @@ def search(
                 score, doc = more[j]
                 doc_ids = doc_index.get(doc, [])
                 for doc_id in doc_ids:
+                    try:
+                        inv_score = 1. / score
+                    except ZeroDivisionError:
+                        inv_score = 1. / (score + 1e-4)
                     results.append({
                         'query_id': query_id,
                         'doc_id': doc_id,
-                        'score': 1. / score # inverse distance
+                        'score': inv_score # inverse distance
                     })
                     if len(results) >= max_K:
                         break

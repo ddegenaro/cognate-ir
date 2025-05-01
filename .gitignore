@@ -8,3 +8,6 @@ words.txt
 lev.tree
 docs.tsv
 searches/
+metrics/
+*.sh
+*.o
