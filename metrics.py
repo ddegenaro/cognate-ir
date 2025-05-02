@@ -5,11 +5,11 @@ import pandas as pd
 import ir_measures as irms
 from ir_measures import MAP, R, P
 
-REWRITE = False
+REWRITE = True
 
 measures = [
-    R@1, R@5, R@10, R@20, R@50, R@100,
-    P@1, P@5, P@10, P@20, P@50, P@100,
+    R@1, R@5, R@10, R@20, R@50, R@100, R@500, R@1000,
+    P@1, P@5, P@10, P@20, P@50, P@100, P@500, P@1000,
     MAP
 ]
 

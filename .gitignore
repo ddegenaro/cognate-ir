@@ -1,5 +1,6 @@
 CogNet/
 SequenceComparison-SupplementaryMaterial-v1.0-0-gcc4bf85/
+__pycache__/
 qrels-train-v2.jsonl
 qrels-test-v2.jsonl
 queries-train.tsv
@@ -9,5 +10,7 @@ lev.tree
 docs.tsv
 searches/
 metrics/
+timing/
 *.sh
-*.o
+*.o*
+*.e*
