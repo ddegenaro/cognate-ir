@@ -8,9 +8,12 @@ queries-test.tsv
 words.txt
 lev.tree
 docs.tsv
+latex/
 searches/
 metrics/
 timing/
+measure_latex/
+sig/
 *.sh
 *.o*
 *.e*
